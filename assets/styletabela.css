@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Abel');
+
+
+
+#wrapper {
+  width: 100%;
+    
+  @media screen and (min-width: 1024px) {
+    width: 1100px;
+    margin: 0 auto;
+  }
+}
+
+  #pricing-tables {
+    margin-top: 10rem;
+    font-family: "Abel", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+
+    
+    @media screen and (min-width: 1024px) {
+      flex-direction: row;
+    }
+  }
+    
+    .pricing-table {
+      max-width: 300px;
+      width: 100%;
+      margin: 15px 0;
+      
+      @media screen and (min-width: 1024px) {
+        margin: 0;
+      }
+    }
+      .header 
+        
+        .title {
+          text-align: center;
+          text-transform: uppercase;
+          padding: 15px 0;
+          background: #e4e4e4;
+          color: #000;
+          font-size: 16x;
+        }
+        
+        .price {
+          text-align: center;
+          text-transform: uppercase;
+          padding: 15px 0;
+          background: #f6f6f6;
+          color: #000;
+          font-size: 28px;
+          font-weight: 300;
+        }
+            
+            span {
+              font-size: 14px;
+              vertical-align: super;
+            }
+        
+      
+    
+      .features {
+        background: #fff;
+      }
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 15px 0;
+        }
+          li {
+            padding: 8px 5px;
+            text-align: center;
+          }
+            span {
+              color: #999;
+            }
+
+      .signup {
+        background: #fff;
+        padding: 2px 0 25px 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+      }
+        .singup a {
+          width: auto;
+          margin: 0 auto;
+          padding: 8px 10px;
+          text-align: center;
+          text-decoration: none;
+          color: #FC4445;
+          border: 1px solid #FC4445;
+          transition: all .2s ease;
+        }
+        .singup a:hover {
+            color: #fff;
+            background: #FC4445;
+          }
+         
+      
+  
+       
+        
+          .title {
+            background: #FC4445;
+            color: #fff;
+          }
+        
+      
+        .signup a {
+            background: #FC4445;
+            color: #fff;
+          }
+            a:hover {
+              color: #FC4445;
+              background: #fff;
+            }
+          
+        

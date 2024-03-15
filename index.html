@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <title>Projeto</title>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo"> <span>EDU</span>Quest </a>
+        <ul class="navbar">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="ambiente.html">Ambiente</a></li>
+            <li><a href="sobre.html">Sobre Nós</a></li>
+        </ul>
+        <div class="menu-btn" >
+            <span>MENU</span>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+        <div class="menu-btn-constraste"><span ></span> 
+            <i class='bx bx-sun' onclick="constraste()"></i></div>
+    </header>
+    <!-- <button class="constraste" onclick="constraste()"> mudar</button> -->
+
+    <section class="home">
+        <div class="home-text">
+            <span> 📚</span>
+            <h1> Crie seu ambiente e comece a estudar com a gente!</h1>
+            <p> Criação ➡ Revisão ➡ Estudo constante  </p>
+            <div class="main-btn">
+                <a href="formacao.html" class="btn"> Ambiente</a>
+                <a href="sobre.html" class="btn two"> Sobre Nós</a>
+            </div>
+        </div>
+        <!-- <div class="home-img">
+            <img src="assets/img/FotoPortfolioFinal.png" alt="Foto do Pietro Bonora">
+        </div> -->
+    </section>
+    <div class="share">
+        <p>Redes Sociais:</p>
+        <div class="social">
+            <a href="https://www.facebook.com/pietro.bonora.50" target="_blank"><i class='bx bxl-facebook'></i> <a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="https://www.instagram.com/bonora_pi" target="_blank"><i class='bx bxl-instagram'></i></a>
+            <a href="#"><i class='bx bxl-linkedin' ></i></a>
+            <a href="https://github.com/Pibonora" target="_blank"><i class='bx bxl-github'></i></a>
+        </div>
+    </div>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
+      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      <script>
+        new window.VLibras.Widget({
+            rootPah: '/app',
+            personalization: 'https://vlibras.gov.br/config/default_logo.json',
+            opacity: 0.5,
+            position: 'R',
+            avatar: 'random',
+        });
+      </script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script type="text/javascript" src="assets/script.js"> </script>
+</body>
+</html>
