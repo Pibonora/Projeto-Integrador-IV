@@ -8,10 +8,11 @@
 }
 
 :root{
+    /* --bg-color: #9e9ea3; */
     --bg-color: #1f1f21;
     --text-color: #FFF;
     --text-contraste: #FFF;
-    --main-color: #ffae00;
+    --main-color: #0170f3;
     --color-contraste: #141414;
 
     --big-font: 7rem;

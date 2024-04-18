@@ -104,7 +104,7 @@
           }
          
        */
-       .link a{
+       .link{
         display: block;
         width: 300px;
         height: 40px;
@@ -122,14 +122,14 @@
         text-transform: uppercase;
       }
       
-      .link a span{
+      .link span{
         position: relative;
         z-index: 2;
         top:10px;
         color: black;
       }
       
-      .link a:after{
+      .link:after{
         position: absolute;
         content: "";
         top: 0;
@@ -140,11 +140,56 @@
         transition: all .35s;
       }
       
-      .link a:hover{
+      .link:hover{
         color: #000;
       }
       
-      .link a:hover:after{
+      .link:hover:after{
+        width: 100%;
+      }
+/* aaaaaaaaaaaaaaaa */
+
+       button{
+        display: block;
+        width: 300px;
+        height: 40px;
+        /* line-height: 40px; */
+        font-size: 18px;
+        /* font-family: sans-serif; */
+        text-decoration: none;
+        color: #000;
+        /* border: 2px solid #333; */
+        text-align: center;
+        position: relative;
+        transition: all .35s;
+        justify-content: center;
+        background-color: #fff;
+        text-transform: uppercase;
+      }
+      
+      button span{
+        position: relative;
+        z-index: 2;
+        top:10px;
+        color: black;
+      }
+      
+      button:after{
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: #ffae00;
+        transition: all .35s;
+      }
+      
+      button:hover{
+        color: #000;
+      }
+      
+      button:hover:after{
         width: 100%;
       }
        
