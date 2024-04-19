@@ -1,8 +1,80 @@
 @import url('https://fonts.googleapis.com/css?family=Abel');
 
+.card {
+  border: 2px solid #0170f3; /* Adicionando uma borda azul */
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 100px;
+  margin-left: 50px;
+  width: 15%;  /* Definindo largura do card */
+  height: 150px; /* Definindo altura maior que a largura */
+  background-color: #f9f9f9;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adicionando sombra */
+  text-align: center; /* Centralizando conteúdo */
+  display: inline-block; /* Permitindo que os cards sejam exibidos na mesma linha */
+  vertical-align: top; /* Alinhando os cards no topo */
+
+}
+.container-card{
+  padding-top: 6%;
+  padding-left: 5%;
+  width: 80%;
+  margin: auto;
+}
+.card-header {
+  margin-bottom: 10px;
+}
+
+.card-header h2 {
+  margin: 0;
+  color: #0170f3; /* Cor azul para o título */
+}
+
+.card-header button {
+  background-color: #0170f3; /* Cor de fundo azul para o botão */
+  color: #fff; /* Cor do texto branca */
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Efeito de transição */
+  margin-top: 20px;
+}
+
+.card-header button:hover {
+  background-color: #01549b; /* Mudança de cor ao passar o mouse */
+}
+
+.button-container button {
+  background-color: #0170f3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+
+}
+
+.button-container button:hover {
+  background-color: #0150a3;
+}
+.card-content button {
+  background-color: #0170f3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.card-content button:hover {
+  background-color: #0150a3;
+}
 
 
-#wrapper {
+
+/*#wrapper {
   width: 100%;
     
   @media screen and (min-width: 1024px) {
@@ -103,17 +175,17 @@
             background: #FC4445;
           }
          
-       */
+       
        .link{
         display: block;
         width: 300px;
         height: 40px;
-        /* line-height: 40px; */
+         line-height: 40px; 
         font-size: 18px;
-        /* font-family: sans-serif; */
+        font-family: sans-serif; 
         text-decoration: none;
         color: #000;
-        /* border: 2px solid #333; */
+        /* border: 2px solid #333; 
         text-align: center;
         position: relative;
         transition: all .35s;
@@ -136,7 +208,7 @@
         left: 0;
         width: 0;
         height: 100%;
-        background: #ffae00;
+        background: #0170f3;
         transition: all .35s;
       }
       
@@ -147,18 +219,18 @@
       .link:hover:after{
         width: 100%;
       }
-/* aaaaaaaaaaaaaaaa */
+/* aaaaaaaaaaaaaaaa 
 
        button{
         display: block;
         width: 300px;
         height: 40px;
-        /* line-height: 40px; */
+        /* line-height: 40px; 
         font-size: 18px;
-        /* font-family: sans-serif; */
+        /* font-family: sans-serif; 
         text-decoration: none;
         color: #000;
-        /* border: 2px solid #333; */
+        /* border: 2px solid #333; 
         text-align: center;
         position: relative;
         transition: all .35s;
@@ -181,7 +253,7 @@
         left: 0;
         width: 0;
         height: 100%;
-        background: #ffae00;
+        background: #0170f3;
         transition: all .35s;
       }
       
