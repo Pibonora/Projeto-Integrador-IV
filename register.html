@@ -2,16 +2,15 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/stylelogin.css">
-    <title>Login</title>
+    <title>Registro</title>
+    <link rel="stylesheet" href="assets/styleregister.css">
 </head>
 <body>
     <div id="login">
         <form class="card">
             <div class="card-header" id="auth-container">
-                <h2>Entrar</h2>
+                <h2>Registrar</h2>
             </div>
 
             <div class="card-content">
@@ -27,16 +26,15 @@
             </div>
 
             <div class="card-footer">
-                <button id="btn-login">Login</button>
-                <a href="register.html" class="register-link">Não possui uma conta? Registrar</a>
-                <a href="#" class="recuperar_senha">Esqueceu a senha?</a>
+                <button type="button" id="btn-register" class="submit">Registrar</button>
+                <a href="login.html">Já tem uma conta? Entrar</a>
             </div>
         </form>
     </div>
 
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-    <script type="module" src="login.js"></script>
+    <script type="module" src="firebaseConfig.js"></script>
+    <script type="module" src="register.js"></script>
 </body>
 </html>

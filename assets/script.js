@@ -63,3 +63,106 @@ function exibirPerguntasRespostas() {
         container.innerHTML += `<p><strong>Resposta:</strong> ${item.resposta}</p>`;
     });
 }
+
+
+// Banco de dados
+import firebaseConfig from './firebaseConfig.js';
+
+// Configuração do Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+document.getElementById('adicionar').addEventListener('click', function() {
+    const nome = document.getElementById('nome').value;
+    if (nome) {
+        const novoRegistro = {
+            nome: nome,
+            perguntasRespostas: []
+        };
+        const newKey = db.ref().child('registros').push().key;
+        db.ref('registros/' + newKey).set(novoRegistro);
+        criarCard(novoRegistro, newKey);
+        document.getElementById('nome').value = '';
+    }
+});
+
+function criarCard(registro, key) {
+    const cardContainer = document.getElementById('card-container');
+    const card = document.createElement('div');
+    card.classList.add('card');
+
+    const cardContent = document.createElement('div');
+    cardContent.classList.add('card-content');
+
+    const h3 = document.createElement('h3');
+    h3.textContent = registro.nome;
+
+    const showButton = document.createElement('button');
+    showButton.classList.add('card-content');
+    showButton.textContent = 'Perguntas/Respostas';
+    showButton.addEventListener('click', function() {
+        exibirPerguntasRespostas(registro, key, cardContent);
+    });
+
+    cardContent.appendChild(h3);
+    cardContent.appendChild(showButton);
+    card.appendChild(cardContent);
+    cardContainer.appendChild(card);
+}
+
+function exibirPerguntasRespostas(registro, key, cardContent) {
+    cardContent.innerHTML = '';
+
+    const h3 = document.createElement('h3');
+    h3.textContent = registro.nome;
+    cardContent.appendChild(h3);
+
+    let indexPerguntaAtual = 0;
+    let indexRespostaAtual = 0;
+
+    function mostrarPergunta() {
+        if (indexPerguntaAtual < registro.perguntasRespostas.length) {
+            const perguntaElement = document.createElement('p');
+            perguntaElement.textContent = `Pergunta: ${registro.perguntasRespostas[indexPerguntaAtual].pergunta}`;
+            cardContent.appendChild(perguntaElement);
+
+            const mostrarRespostaButton = document.createElement('button');
+            mostrarRespostaButton.textContent = 'Mostrar Resposta';
+            mostrarRespostaButton.classList.add('card-content');
+            mostrarRespostaButton.addEventListener('click', function() {
+                mostrarResposta(perguntaElement);
+            });
+
+            const proximaPerguntaButton = document.createElement('button');
+            proximaPerguntaButton.textContent = 'Próxima Pergunta';
+            proximaPerguntaButton.classList.add('card-content');
+            proximaPerguntaButton.addEventListener('click', function() {
+                proximaPergunta(perguntaElement);
+            });
+
+            cardContent.appendChild(mostrarRespostaButton);
+            cardContent.appendChild(proximaPerguntaButton);
+        }
+    }
+
+    function mostrarResposta(perguntaElement) {
+        if (indexRespostaAtual < registro.perguntasRespostas.length) {
+            const respostaElement = document.createElement('p');
+            respostaElement.textContent = `Resposta: ${registro.perguntasRespostas[indexRespostaAtual].resposta}`;
+            perguntaElement.insertAdjacentElement('afterend', respostaElement);
+            indexRespostaAtual++;
+        }
+    }
+
+    function proximaPergunta(perguntaElement) {
+        const respostaElement = perguntaElement.nextElementSibling;
+        if (respostaElement) {
+            respostaElement.remove();
+        }
+        perguntaElement.remove();
+        indexPerguntaAtual++;
+        mostrarPergunta();
+    }
+
+    mostrarPergunta();
+}
