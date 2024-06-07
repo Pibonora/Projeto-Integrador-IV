@@ -1,3 +1,5 @@
+// Animação
+
 let menu = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
@@ -63,3 +65,6 @@ function exibirPerguntasRespostas() {
         container.innerHTML += `<p><strong>Resposta:</strong> ${item.resposta}</p>`;
     });
 }
+
+// Login
+

@@ -17,21 +17,28 @@
 
             <div class="card-content">
                 <div class="card-content-area">
-                    <label for="usuario">Usuário</label>
-                    <input type="text" id="usuario" autocomplete="off">
+                    <label for="usuario">Email</label>
+                    <input type="email" id="email" oninput="onChangeEmail()">
+                    <div class="error" id="email-required-error">Email é obrigatório </div>
+                    <div class="error" id="email-invalid-error">Email é inválido</div>
                 </div>
 
                 <div class="card-content-area">
                     <label for="password">Senha</label>
-                    <input type="password" id="password" autocomplete="off">
+                    <input type="password" id="password" oninput="onChangePassword()">
+                    <div class="error" id="password-required-error">Senha é obrigatória</div>
+                    <div class="error" id="password-invalid-error">Senha é inválida</div>
                 </div>
             </div>
 
             <div class="card-footer">
-                <input type="submit" value="Entrar" class="submit">
-                <a href="#" class="recuperar_senha">Esqueceu a senha?</a>
+                <button type="button" class="submit disabled" id="login-button" disabled="true">Entrar</button>
+                <button type="button" class="submit">Registrar</button>
+                <button type="button" class=" clear disabled" id="recover-password-button" disabled="true">Esqueceu a senha?</button>
             </div>
         </form>
     </div>
+    <script src="assets/login.js"> </script>
+    <script src="assets/validations.js"> </script>
 </body>
 </html>
