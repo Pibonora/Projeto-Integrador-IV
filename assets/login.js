@@ -6,12 +6,17 @@ function onChangeEmail() {
 function onChangePassword() {
     toggleButtonsDisable();
     togglePasswordErrors();
-} 
+}
+
+
+function register() {
+    window.location.href = "register.html";
+}
 
 function toggleEmailErrors() {
     const email = form.email().value;
     form.emailRequiredError().style.display = email ? "none" : "block";
-    
+
     form.emailInvalidError().style.display = validateEmail(email) ? "none" : "block";
 }
 
@@ -48,4 +53,9 @@ const form = {
     password: () => document.getElementById("password"),
     passwordRequiredError: () => document.getElementById("password-required-error"),
     recoverPasswordButton: () => document.getElementById("recover-password-button"),
-} 
+}
+
+document.getElementById('btn-redirecionar').addEventListener('click', function() {
+    history.go(-1); // Redireciona para duas páginas anteriores
+  });
+
