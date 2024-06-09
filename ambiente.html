@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/styletabela.css">
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js" type="module"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js" type="module"></script>
+  <!-- compact -->
   <title>Pietro Bonora</title>
 </head>
 
@@ -15,9 +18,10 @@
     <a href="index.html" class="logo"> <span>EDU</span>Quest </a>
     <ul class="navbar">
       <li><a href="index.html">Home</a></li>
-      <li><a href="formacao.html" class="active">Ambiente</a></li>
+      <li><a href="ambiente.html" class="active">Ambiente</a></li>
       <li><a href="sobre.html">Sobre</a></li>
       <li><a href="login.html">Login</a></li>
+      <li><button id="logout" onclick="logout()">Logout</button></li>
     </ul>
     <div class="menu-btn">
       <span>MENU</span>
@@ -27,114 +31,20 @@
       <i class='bx bx-sun' onclick="constraste()"></i>
     </div>
   </header>
-  <section>
-    <div class="container-card">
-      <div class="card">
-        <div class="card-header">
-          <h2> Geografia</h2>
-          <button>
-            ESTUDAR
-          </button>
-          <div class="card-content">
-          </div>
-          <div>
-          </div>
-        </div>
-      </div>
-      <!-- --- -->
-      <div class="card">
-        <div class="card-header">
-          <h2> Geografia</h2>
-          <button>
-            ESTUDAR
-          </button>
-          <div class="card-content">
-          </div>
-          <div>
-          </div>
-        </div>
-      </div>
-      <!-- --- -->
-      <div class="card">
-        <div class="card-header">
-          <h2> Geografia</h2>
-          <button>
-            ESTUDAR
-          </button>
-          <div class="card-content">
-          </div>
-          <div>
-          </div>
-        </div>
-      </div>
-      <!-- --- -->
-      <div class="card">
-        <div class="card-header">
-          <h2> Geografia</h2>
-          <button>
-            ESTUDAR
-          </button>
-          <div class="card-content">
-          </div>
-          <div>
-          </div>
-        </div>
-      </div>
-      <!-- --- -->
-      <div class="card">
-        <div class="card-header">
-          <h2> Geografia</h2>
-          <button>
-            ESTUDAR
-          </button>
-          <div class="card-content">
-          </div>
-          <div>
-          </div>
-        </div>
-      </div>
-      <!-- --- -->
-      <div class="card">
-        <div class="card-header">
-          <h2> Geografia</h2>
-          <button>
-            ESTUDAR
-          </button>
-          <div class="card-content">
-          </div>
-          <div>
-          </div>
-        </div>
-      </div>
-      <!-- --- -->
-      <div class="card">
-        <div class="card-header">
-          <h2> Geografia</h2>
-            <button>
-                ESTUDAR
-            </button>
-            <div class="card-content">
-            </div>
-            <div>
-            </div>
-        </div>
-      </div>
-      <!-- --- -->
-      <div class="card">
-        <div class="card-header">
-          <h2> Geografia</h2>
-            <button>
-                ESTUDAR
-            </button>
-            <div class="card-content">
-            </div>
-            <div>
-            </div>
-        </div>
-      </div>
+
+
+  <div class="centro">
+    <div class="centro-div">
+      <h1>Armazenamento de Perguntas e Respostas</h1>
+    <input type="text" id="nome" placeholder="Digite seu nome">
+    <button id="add-pergunta-resposta-btn">Adicionar Pergunta/Resposta</button>
+    <button onclick="terminar()">Terminar</button>
+    <div id="container" class="container"></div>
     </div>
-    </div>
-  </section>
+  </div>
+
+
+
   <div class="share">
     <div class="social">
       <a href="https://www.facebook.com/pietro.bonora.50" target="_blank"><i class='bx bxl-facebook'></i> <a>
@@ -160,8 +70,10 @@
       avatar: 'random',
     });
   </script>
+  <script src="assets/firebaseConfig.js" type="module"></script>
   <script src="https://unpkg.com/scrollreveal"></script>
-  <script type="text/javascript" src="assets/script.js"> </script>
+  <script type="module" src="assets/ambienteFirebase.js"> </script>
+  <script src="assets/ambiente.js"> </script>
 </body>
 
 </html>

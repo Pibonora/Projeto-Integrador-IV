@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,9 +12,9 @@
 </head>
 
 <body>
-    <header  id="btn-redirecionar2">
+    <header id="btn-redirecionar2">
         <div class="voltar">
-            <img 
+            <img
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAiklEQVR4nO3WsQ3CQAxAUW9ARmD1zJASKmhyRFQMwCifIklHibjY+m+C+7J1coQkSZL0L8AJmIAxkkc0Vkskjpi3iDdwjmwoFNGM6A0YKkxiqBLxMKI3Ck3iSX/3KiG3X00l92qV+nZ3xhwVFY7FUuf7zpijouCatS3mFZmxxlyAa++3SJIkSfHNB32MhlzT81jPAAAAAElFTkSuQmCC">
         </div>
     </header>
@@ -25,23 +26,25 @@
 
             <div class="card-content">
                 <div class="card-content-area">
-                    <label for="usuario">Email</label>  
-                    <input type="email" id="email" >
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="seu@email.com" oninput="onChangeEmail()">
                     <div class="error" id="email-required-error">Email é obrigatório </div>
                     <div class="error" id="email-invalid-error">Email é inválido</div>
                 </div>
 
                 <div class="card-content-area">
                     <label for="password">Senha</label>
-                    <input type="password" id="password" >
+                    <input type="password" id="password" placeholder="Senha" oninput="onChangePassword()">
                     <div class="error" id="password-required-error">Senha é obrigatória</div>
-                    <div class="error" id="password-invalid-error">Senha é inválida</div>
                 </div>
             </div>
 
             <div class="card-footer">
-                <button type="button" class="login" id="register-button">Registrar</button>
-                <button type="button" class=" clear" id="recover-password-button" onclick="irLogin()"  >Já tem uma conta? Entre aqui!</button>
+                <button type="button" class="login" id="register-button" disabled="true">Registrar</button>
+                <button type="button" class=" clear" id="criar-conta-button" onclick="irLogin()">Já tem uma conta?
+                    Entre aqui!</button>
+                <button type="button" class=" clear" id="recover-password-button" hidden>Já tem uma conta?
+                    Entre aqui!</button>
             </div>
         </form>
     </div>
@@ -50,5 +53,7 @@
     <script src="assets/firebaseConfig.js" type="module"></script>
     <script src="assets/registerFirebase.js" type="module"> </script>
     <script src="assets/register.js"></script>
+    <script src="assets/validations.js"></script>
 </body>
+
 </html>
