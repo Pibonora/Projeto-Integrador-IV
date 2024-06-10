@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="assets/styletabela.css">
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js" type="module"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js" type="module"></script>
+    <script src="ambienteFirebase.js" defer type="module"></script>
   <!-- compact -->
   <title>Pietro Bonora</title>
 </head>
@@ -21,7 +23,7 @@
       <li><a href="ambiente.html" class="active">Ambiente</a></li>
       <li><a href="sobre.html">Sobre</a></li>
       <li><a href="login.html">Login</a></li>
-      <li><button id="logout" onclick="logout()">Logout</button></li>
+      <li><button id="logout">Logout</button></li>
     </ul>
     <div class="menu-btn">
       <span>MENU</span>
@@ -36,10 +38,10 @@
   <div class="centro">
     <div class="centro-div">
       <h1>Armazenamento de Perguntas e Respostas</h1>
-    <input type="text" id="nome" placeholder="Digite seu nome">
-    <button id="add-pergunta-resposta-btn">Adicionar Pergunta/Resposta</button>
-    <button onclick="terminar()">Terminar</button>
-    <div id="container" class="container"></div>
+      <input type="text" id="nome" placeholder="Digite seu nome">
+      <button id="add-pergunta-resposta-btn">Adicionar Pergunta/Resposta</button>
+      <button id="logout-btn">Sair</button>
+      <div id="container" class="container"></div>
     </div>
   </div>
 
