@@ -8,39 +8,41 @@
   <link rel="stylesheet" href="assets/styletabela.css">
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js" type="module"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js" type="module"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js" type="module"></script>
-    <script src="ambienteFirebase.js" defer type="module"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js" type="module"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js" type="module"></script>
+  <script src="ambienteFirebase.js" defer type="module"></script>
   <!-- compact -->
   <title>Pietro Bonora</title>
 </head>
 
-<body>
+<body class="body" id="body">
   <header>
-    <a href="index.html" class="logo"> <span>EDU</span>Quest </a>
-    <ul class="navbar">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="ambiente.html" class="active">Ambiente</a></li>
-      <li><a href="sobre.html">Sobre</a></li>
-      <li><a href="login.html">Login</a></li>
-      <li><button id="logout">Logout</button></li>
-    </ul>
-    <div class="menu-btn">
-      <span>MENU</span>
-      <div class="bx bx-menu" id="menu-icon"></div>
-    </div>
-    <div class="menu-btn-constraste"><span></span>
-      <i class='bx bx-sun' onclick="constraste()"></i>
-    </div>
+    <nav class="nav">
+      <a href="index.html" class="logo"> <span>EDU</span>Quest </a>
+      <ul class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ambiente.html" class="active">Ambiente</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a id="logout-btn" class="clear">Sair</a></li>
+      </ul>
+      <div class="menu-btn">
+        <span>MENU</span>
+        <div class="bx bx-menu" id="menu-icon"></div>
+      </div>
+      <div class="menu-btn-constraste"><span></span>
+        <i class='bx bx-sun' onclick="toggle()"></i>
+      </div>
+    </nav>
   </header>
 
 
   <div class="centro">
     <div class="centro-div">
       <h1>Armazenamento de Perguntas e Respostas</h1>
-      <input type="text" id="nome" placeholder="Digite seu nome">
+      <input type="text" id="nome" placeholder="Digite o titulo do ambiente">
       <button id="add-pergunta-resposta-btn">Adicionar Pergunta/Resposta</button>
-      <button id="logout-btn">Sair</button>
+
       <div id="container" class="container"></div>
     </div>
   </div>
@@ -68,7 +70,7 @@
       rootPah: '/app',
       personalization: 'https://vlibras.gov.br/config/default_logo.json',
       opacity: 0.5,
-      position: 'R',
+      position: 'B',
       avatar: 'random',
     });
   </script>
@@ -76,6 +78,7 @@
   <script src="https://unpkg.com/scrollreveal"></script>
   <script type="module" src="assets/ambienteFirebase.js"> </script>
   <script src="assets/ambiente.js"> </script>
+  <script type="text/javascript" src="assets/script.js"> </script>
 </body>
 
 </html>

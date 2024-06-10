@@ -102,7 +102,7 @@ function exibirRegistros(data) {
         nomeTitulo.textContent = registro.nome;
         cardHeader.appendChild(nomeTitulo);
         const btnPerguntasRespostas = document.createElement('button');
-        btnPerguntasRespostas.textContent = 'Perguntas/Respostas';
+        btnPerguntasRespostas.textContent = 'Estudar';
         btnPerguntasRespostas.addEventListener('click', function() {
             exibirPerguntasRespostas(card, registro);
         });

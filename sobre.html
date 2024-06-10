@@ -8,21 +8,24 @@
   href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <title>Projeto</title>
 </head>
-<body>
+<body class="body" id="body">
     <header>
-        <a href="index.html" class="logo"> <span>EDU</span>Quest </a>
-        <ul class="navbar">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="ambiente.html">Ambiente</a></li>
-            <li><a href="sobre.html" class="active">Sobre Nós</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-        <div class="menu-btn" >
-            <span>MENU</span>
-            <div class="bx bx-menu" id="menu-icon"></div>
-        </div>
-        <div class="menu-btn-constraste"><span ></span> 
-            <i class='bx bx-sun' onclick="constraste()"></i></div>
+        <nav class="nav">
+            <a href="index.html" class="logo"> <span>EDU</span>Quest </a>
+            <ul class="navbar">
+                <li><a href="index.html" >Home</a></li>
+                <li><a href="ambiente.html">Ambiente</a></li>
+                <li><a href="sobre.html" class="active">Sobre Nós</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+            <div class="menu-btn">
+                <span>MENU</span>
+                <div class="bx bx-menu" id="menu-icon"></div>
+            </div>
+            <div class="menu-btn-constraste"><span></span>
+                <i class='bx bx-sun' onclick="toggle()"></i>
+            </div>
+        </nav>
     </header>
 
 <!-- Conteudo -->
