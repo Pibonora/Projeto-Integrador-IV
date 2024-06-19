@@ -1,12 +1,14 @@
 // Animação
 
-let menu = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
-
-menu.onclick = () => {
-    menu.classList.toggle('bx-x');
-    navbar.classList.toggle('open')
-};
+document.addEventListener('DOMContentLoaded', (event) => {
+    let menu = document.querySelector('#menu-icon');
+    let navbar = document.querySelector('.navbar');
+  
+    menu.onclick = () => {
+      menu.classList.toggle('bx-x');
+      navbar.classList.toggle('open');
+    };
+  });
 function constraste(){
 document.body.style.setProperty("--bg-color", "#bababa");
 document.body.style.setProperty("--text-color", "#000");
@@ -29,7 +31,7 @@ sr.reveal('.home-img', {delay:1000, origin: 'right'});
 sr.reveal('.container-card', {delay:500, origin: 'right'});
 sr.reveal('.menu-btn-constraste', {delay:600, origin: 'right'});
 sr.reveal('.enabled', {delay:700, origin: 'right'});
-sr.reveal('.centro', {delay:700, origin: 'top'});
+// sr.reveal('.centro', {delay:700, origin: 'top'});
 
 
 function toggle() {

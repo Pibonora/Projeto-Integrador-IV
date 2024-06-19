@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Abel');
 
-:root{
-  /* --bg-color: #9e9ea3; */
+:root {
   --bg-color: #1f1f21;
   --text-color: #FFF;
   --text-contraste: #FFF;
@@ -9,58 +8,67 @@
   --color-contraste: #141414;
 
   --big-font: 7rem;
-  --p-font:1.1rem;
+  --p-font: 1.1rem;
 }
 
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Abel', sans-serif;
+}
 
-
-h1{
+h1 {
   text-align: center;
   margin-bottom: 1rem;
 }
-#nome{
+
+#nome {
   margin-bottom: 2rem;
 }
-
 .centro-div input {
   margin-top: 10px;
-  padding:0 5px;
+  padding: 0 5px;
   margin-bottom: 5px;
   background-color: transparent;
-  border:none;
+  border: none;
   border-bottom: 1px solid var(--main-color);
+  border-left: 1px solid var(--main-color);
+  border-right: 1px solid var(--main-color);
   outline: none;
   color: #fff;
   font-size: 20px;
+  width: 100%;
+  max-width: 30rem;
+  text-align: center;
 }
 
 .centro-div button {
-  background-color: var(--main-color); /* Cor de fundo azul para o botão */
-  color: #fff; /* Cor do texto branca */
+  background-color: var(--main-color);
+  color: #fff;
   border: none;
   border-radius: 5px;
   padding: 8px 15px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Efeito de transição */
+  transition: background-color 0.3s ease;
+  margin: 5px;
 }
 
 .centro-div button:hover {
-  background-color: #01549b; /* Mudança de cor ao passar o mouse */
+  background-color: #01549b;
 }
 
 .card {
-  border: 2px solid var(--main-color); /* Adicionando uma borda azul */
+  border: 2px solid var(--main-color);
   border-radius: 10px;
   padding: 20px;
-  margin: 20px;
-  width: 200px; /* Definindo largura do card */
-  height: 360px; /* Definindo altura maior que a largura */
+  margin: 20px auto;
+  width: calc(100% - 40px);
+  max-width: 200px;
   background-color: #f9f9f9;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adicionando sombra */
-  text-align: center; /* Centralizando conteúdo */
-  display: inline-block; /* Permitindo que os cards sejam exibidos na mesma linha */
-  vertical-align: top; /* Alinhando os cards no topo */
-  margin-top: 5rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .card-header {
@@ -69,22 +77,22 @@ h1{
 
 .card-header h2 {
   margin: 0;
-  color: var(--main-color); /* Cor azul para o título */
+  color: var(--main-color);
 }
 
 .card-header button {
-  background-color: var(--main-color); /* Cor de fundo azul para o botão */
-  color: #fff; /* Cor do texto branca */
+  background-color: var(--main-color);
+  color: #fff;
   border: none;
   border-radius: 5px;
   padding: 8px 15px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Efeito de transição */
-  margin-top: 15%;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
 
 .card-header button:hover {
-  background-color: #01549b; /* Mudança de cor ao passar o mouse */
+  background-color: #01549b;
 }
 
 .button-container button {
@@ -99,6 +107,7 @@ h1{
 .button-container button:hover {
   background-color: #0150a3;
 }
+
 .card-content button {
   background-color: var(--main-color);
   color: #fff;
@@ -112,18 +121,70 @@ h1{
 .card-content button:hover {
   background-color: #0150a3;
 }
-.card p{
+
+.card p {
   color: var(--main-color);
   margin-top: 0.5rem;
 }
-.centro{
-  margin: 10rem auto;
+
+.centro {
+  margin: 5rem auto;
   text-align: center;
 }
-.centro-div{
-  margin: 0 5rem;
+
+.centro-div {
+  margin: 0 2rem;
 }
 
-.clear{
+.clear {
   cursor: pointer;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .centro {
+    margin: 3rem auto;
+  }
+
+  .centro-div input {
+    font-size: 18px;
+  }
+
+  .card {
+    max-width: 100%;
+    margin: 10px auto;
+  }
+
+  .centro-div {
+    margin: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .centro {
+    margin: 2rem auto;
+  }
+
+  .centro-div input {
+    font-size: 16px;
+  }
+
+  .centro-div button {
+    padding: 8px 10px;
+  }
+
+  .card {
+    max-width: 100%;
+    margin: 10px auto;
+    padding: 15px;
+  }
+
+  .card-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .card-header button,
+  .card-content button {
+    padding: 6px 10px;
+  }
 }

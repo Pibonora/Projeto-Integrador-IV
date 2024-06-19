@@ -37,20 +37,26 @@
   </header>
 
 
-  <div class="centro">
+  <div class="centro" style="margin-top: 3rem;">
     <div class="centro-div">
-      <h1>Armazenamento de Perguntas e Respostas</h1>
-      <input type="text" id="nome" placeholder="Digite o titulo do ambiente">
-      <button id="add-pergunta-resposta-btn">Adicionar Pergunta/Resposta</button>
-
-      <div id="container" class="container"></div>
+        <h1>Armazenamento de Perguntas e Respostas</h1>
+        <input type="text" id="nome" placeholder="Digite o título do ambiente">
+        <form id="perguntas-respostas-form">
+            <div class="pergunta-resposta">
+                <input type="text" name="pergunta" placeholder="Digite a pergunta">
+                <input type="text" name="resposta" placeholder="Digite a resposta">
+            </div>
+        </form>
+        <button id="add-pergunta-resposta-btn" style="margin: 0 auto; margin-top: 1rem;">Adicionar Pergunta/Resposta</button><br>
+        <button id="salvar-btn" style="margin: 0 auto; margin-top: 0.5rem;">Salvar</button>
+        <div id="container" class="container"></div>
     </div>
-  </div>
+</div>
 
 
 
   <div class="share">
-    <div class="social">
+    <div class="social"  style="margin-bottom: -35rem;">
       <a href="https://www.facebook.com/pietro.bonora.50" target="_blank"><i class='bx bxl-facebook'></i> <a>
           <a href="#"><i class='bx bxl-twitter'></i></a>
           <a href="https://www.instagram.com/bonora_pi" target="_blank"><i class='bx bxl-instagram'></i></a>
@@ -74,11 +80,11 @@
       avatar: 'random',
     });
   </script>
+  <script src="assets/script.js"></script>
   <script src="assets/firebaseConfig.js" type="module"></script>
   <script src="https://unpkg.com/scrollreveal"></script>
   <script type="module" src="assets/ambienteFirebase.js"> </script>
   <script src="assets/ambiente.js"> </script>
-  <script type="text/javascript" src="assets/script.js"> </script>
 </body>
 
 </html>

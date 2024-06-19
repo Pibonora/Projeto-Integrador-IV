@@ -20,13 +20,8 @@ const auth = getAuth(app);
 const db = getDatabase(app);
 
 window.onload = function() {
-    // Função para adicionar pergunta e resposta
-    document.getElementById('add-pergunta-resposta-btn').addEventListener('click', adicionarPerguntaResposta);
-
-    // Função para sair
-    document.getElementById('logout-btn').addEventListener('click', logout);
-
-    // Verifica se o usuário está autenticado e carrega os registros
+    document.getElementById('add-pergunta-resposta-btn').addEventListener('click', adicionarCampoPerguntaResposta);
+    document.getElementById('salvar-btn').addEventListener('click', adicionarPerguntaResposta);
     onAuthStateChanged(auth, (user) => {
         if (user) {
             const userId = user.uid;
@@ -45,19 +40,29 @@ window.onload = function() {
     });
 };
 
+function adicionarCampoPerguntaResposta() {
+    const form = document.getElementById('perguntas-respostas-form');
+    const div = document.createElement('div');
+    div.classList.add('pergunta-resposta');
+    div.innerHTML = `
+        <input type="text" name="pergunta" placeholder="Digite a pergunta">
+        <input type="text" name="resposta" placeholder="Digite a resposta">
+    `;
+    form.appendChild(div);
+}
+
 function adicionarPerguntaResposta() {
     const nome = document.getElementById('nome').value;
     const perguntasRespostas = [];
+    const form = document.getElementById('perguntas-respostas-form');
+    const campos = form.getElementsByClassName('pergunta-resposta');
 
-    let continuar = true;
-    while (continuar) {
-        const pergunta = prompt("Digite a pergunta (ou clique em Cancelar para parar):");
-        if (pergunta === null) {
-            continuar = false;
-            break;
+    for (const campo of campos) {
+        const pergunta = campo.querySelector('input[name="pergunta"]').value;
+        const resposta = campo.querySelector('input[name="resposta"]').value;
+        if (pergunta && resposta) {
+            perguntasRespostas.push({ pergunta, resposta });
         }
-        const resposta = prompt("Digite a resposta:");
-        perguntasRespostas.push({ pergunta, resposta });
     }
 
     if (perguntasRespostas.length === 0) {
@@ -73,13 +78,24 @@ function adicionarPerguntaResposta() {
         set(newRegistroRef, {
             nome,
             perguntasRespostas
+        }).then(() => {
+            alert('Perguntas e respostas salvas com sucesso!');
+            form.innerHTML = ''; // Limpa o formulário após o salvamento
+            const div = document.createElement('div');
+            div.classList.add('pergunta-resposta');
+            div.innerHTML = `
+                <input type="text" name="pergunta" placeholder="Digite a pergunta">
+                <input type="text" name="resposta" placeholder="Digite a resposta">
+            `;
+            form.appendChild(div);
         });
     } else {
         alert('Usuário não autenticado.');
     }
 }
 
-function logout() {
+document.getElementById("logout-btn").addEventListener('click', function (e) {
+    e.preventDefault()
     signOut(auth).then(() => {
         alert('Logout realizado com sucesso.');
         window.location.href = 'login.html';
@@ -87,7 +103,8 @@ function logout() {
         console.error('Erro ao sair:', error);
         alert('Erro ao sair: ' + error.message);
     });
-}
+})
+
 
 function exibirRegistros(data) {
     const container = document.getElementById('container');
@@ -113,9 +130,8 @@ function exibirRegistros(data) {
 }
 
 function exibirPerguntasRespostas(card, registro) {
-    // Verifica se o conteúdo já foi exibido
     if (card.querySelector('.card-content')) {
-        return; // Se já existe conteúdo, sai da função
+        return;
     }
 
     const cardContent = document.createElement('div');
@@ -123,14 +139,14 @@ function exibirPerguntasRespostas(card, registro) {
     let index = 0;
 
     function mostrarProximaPergunta() {
-        cardContent.innerHTML = ''; // Limpa o conteúdo para exibir a próxima pergunta
+        cardContent.innerHTML = '';
         if (index < registro.perguntasRespostas.length) {
             const perguntaResposta = registro.perguntasRespostas[index];
-            cardContent.innerHTML = `<p>Pergunta: ${perguntaResposta.pergunta}</p>`;
+            cardContent.innerHTML = `<p style="color: black">Pergunta:</p> <p>${perguntaResposta.pergunta}</p>`;
             const btnMostrarResposta = document.createElement('button');
             btnMostrarResposta.textContent = 'Mostrar Resposta';
             btnMostrarResposta.addEventListener('click', function() {
-                cardContent.innerHTML += `<p>Resposta: ${perguntaResposta.resposta}</p>`;
+                cardContent.innerHTML += `<p style="color: black">Resposta:</p> <p>${perguntaResposta.resposta}</p>`;
                 const btnProximaPergunta = document.createElement('button');
                 btnProximaPergunta.textContent = 'Próxima Pergunta';
                 btnProximaPergunta.addEventListener('click', function() {
@@ -145,8 +161,8 @@ function exibirPerguntasRespostas(card, registro) {
             const btnEstudarNovamente = document.createElement('button');
             btnEstudarNovamente.textContent = 'Estudar Novamente';
             btnEstudarNovamente.addEventListener('click', function() {
-                index = 0; // Reinicia o índice
-                mostrarProximaPergunta(); // Recomeça a exibição das perguntas
+                index = 0;
+                mostrarProximaPergunta();
             });
             cardContent.appendChild(btnEstudarNovamente);
         }
@@ -155,3 +171,4 @@ function exibirPerguntasRespostas(card, registro) {
     mostrarProximaPergunta();
     card.appendChild(cardContent);
 }
+
