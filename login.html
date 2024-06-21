@@ -7,34 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/stylelogin.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-
     <title>Login</title>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js" type="module"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js" type="module"></script>
-      <!-- compact -->
-    <!-- Import your login script -->
-
 </head>
 
 <body class="body" id="body">
     <header>
-    <nav class="nav">
-        <a href="index.html" class="logo"> <span>EDU</span>Quest </a>
-        <ul class="navbar">
-            <li><a href="index.html" >Home</a></li>
-            <li><a href="ambiente.html">Ambiente</a></li>
-            <li><a href="sobre.html">Sobre Nós</a></li>
-            <li><a href="login.html" class="active">Login</a></li>
-        </ul>
-        <div class="menu-btn">
-            <span>MENU</span>
-            <div class="bx bx-menu" id="menu-icon"></div>
-        </div>
-        <div class="menu-btn-constraste"><span></span>
-            <i class='bx bx-sun' onclick="toggle()"></i>
-        </div>
-    </nav>
-</header>
+        <nav class="nav">
+            <a href="index.html" class="logo"> <span>EDU</span>Quest </a>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ambiente.html">Ambiente</a></li>
+                <li><a href="sobre.html">Sobre Nós</a></li>
+                <li><a href="login.html" class="active">Login</a></li>
+            </ul>
+            <div class="menu-btn">
+                <span>MENU</span>
+                <div class="bx bx-menu" id="menu-icon"></div>
+            </div>
+            <div class="menu-btn-constraste"><span></span>
+                <i class='bx bx-sun' onclick="toggle()"></i>
+            </div>
+        </nav>
+    </header>
     <div id="login" style="margin-top: 4rem;">
         <form class="card">
             <div class="card-header">
@@ -66,36 +62,34 @@
     </div>
     <div class="share">
         <div class="social">
-          <a href="https://www.facebook.com/pietro.bonora.50" target="_blank"><i class='bx bxl-facebook'></i> <a>
-              <a href="#"><i class='bx bxl-twitter'></i></a>
-              <a href="https://www.instagram.com/bonora_pi" target="_blank"><i class='bx bxl-instagram'></i></a>
-              <a href="#"><i class='bx bxl-linkedin'></i></a>
-              <a href="https://github.com/Pibonora" target="_blank"><i class='bx bxl-github'></i></a>
+            <a href="https://www.facebook.com/pietro.bonora.50" target="_blank"><i class='bx bxl-facebook'></i> <a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="https://www.instagram.com/bonora_pi" target="_blank"><i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://github.com/Pibonora" target="_blank"><i class='bx bxl-github'></i></a>
         </div>
-      </div>
-      <div vw class="enabled">
+    </div>
+    <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
-          <div class="vw-plugin-top-wrapper"></div>
+            <div class="vw-plugin-top-wrapper"></div>
         </div>
-      </div>
-      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-      <script>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
         new window.VLibras.Widget({
-          rootPah: '/app',
-          personalization: 'https://vlibras.gov.br/config/default_logo.json',
-          opacity: 0.5,
-          position: 'R',
-          avatar: 'random',
+            rootPah: '/app',
+            personalization: 'https://vlibras.gov.br/config/default_logo.json',
+            opacity: 0.5,
+            position: 'R',
+            avatar: 'random',
         });
-      </script>
+    </script>
     <script src="assets/script.js"></script>
     <script src="assets/validations.js"> </script>
     <script type="" src="assets/login.js"></script>
     <script src="assets/firebaseConfig.js" type="module"></script>
     <script src="assets/loginFirebase.js" type="module"></script>
-
-
-    
 </body>
+
 </html>

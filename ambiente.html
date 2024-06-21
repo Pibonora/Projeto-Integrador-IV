@@ -11,7 +11,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js" type="module"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js" type="module"></script>
   <script src="ambienteFirebase.js" defer type="module"></script>
-  <!-- compact -->
   <title>Pietro Bonora</title>
 </head>
 
@@ -39,29 +38,34 @@
 
   <div class="centro" style="margin-top: 3rem;">
     <div class="centro-div">
-        <h1>Armazenamento de Perguntas e Respostas</h1>
-        <input type="text" id="nome" placeholder="Digite o título do ambiente">
-        <form id="perguntas-respostas-form">
-            <div class="pergunta-resposta">
-                <input type="text" name="pergunta" placeholder="Digite a pergunta">
-                <input type="text" name="resposta" placeholder="Digite a resposta">
-            </div>
-        </form>
-        <button id="add-pergunta-resposta-btn" style="margin: 0 auto; margin-top: 1rem;">Adicionar Pergunta/Resposta</button><br>
-        <button id="salvar-btn" style="margin: 0 auto; margin-top: 0.5rem;">Salvar</button>
-        <div id="container" class="container"></div>
+      <h1>Criação de Cards</h1>
+      <input type="text" id="nome" placeholder="Digite o título do card">
+      <form id="perguntas-respostas-form">
+        <div class="pergunta-resposta">
+          <input type="text" name="pergunta" placeholder="Digite a pergunta">
+          <input type="text" name="resposta" placeholder="Digite a resposta">
+        </div>
+      </form>
+      <button id="add-pergunta-resposta-btn" style="margin: 0 auto; margin-top: 1rem;">Adicionar
+        Pergunta/Resposta</button><br>
+      <button id="salvar-btn" style="margin: 0 auto; margin-top: 0.5rem;">Salvar</button>
+      <div id="container" class="container"></div>
     </div>
-</div>
-
-
-
-  <div class="share">
-    <div class="social"  style="margin-bottom: -35rem;">
-      <a href="https://www.facebook.com/pietro.bonora.50" target="_blank"><i class='bx bxl-facebook'></i> <a>
-          <a href="#"><i class='bx bxl-twitter'></i></a>
-          <a href="https://www.instagram.com/bonora_pi" target="_blank"><i class='bx bxl-instagram'></i></a>
-          <a href="#"><i class='bx bxl-linkedin'></i></a>
-          <a href="https://github.com/Pibonora" target="_blank"><i class='bx bxl-github'></i></a>
+  </div>
+  <!-- Formulário de Edição (Modal) -->
+  <div id="edit-modal" class="modal">
+    <div class="modal-content" id="modal-content">
+      <span class="close" id="close-modal">&times;</span>
+      <h2>Editar Card</h2><br>
+      <div class="form-group">
+        <label for="edit-nome">Nome do Card:</label>
+        <input type="text" id="edit-nome" placeholder="Digite o título do ambiente">
+      </div>
+      <form id="edit-perguntas-respostas-form">
+        <!-- Perguntas e Respostas serão adicionadas aqui -->
+      </form>
+      <button id="edit-add-pergunta-resposta-btn">Adicionar Pergunta/Resposta</button><br>
+      <button id="edit-salvar-btn">Salvar Alterações</button>
     </div>
   </div>
   <div vw class="enabled">
@@ -84,7 +88,6 @@
   <script src="assets/firebaseConfig.js" type="module"></script>
   <script src="https://unpkg.com/scrollreveal"></script>
   <script type="module" src="assets/ambienteFirebase.js"> </script>
-  <script src="assets/ambiente.js"> </script>
 </body>
 
 </html>

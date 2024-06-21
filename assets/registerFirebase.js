@@ -6,7 +6,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-document.getElementById('register-button').addEventListener('click', function() {
+document.getElementById('register-button').addEventListener('click', function () {
     console.log("Registrou")
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;

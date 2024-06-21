@@ -55,7 +55,7 @@ const form = {
     recoverPasswordButton: () => document.getElementById("recover-password-button"),
 }
 
-document.getElementById('btn-redirecionar').addEventListener('click', function() {
+document.getElementById('btn-redirecionar').addEventListener('click', function () {
     history.go(-1); // Redireciona para duas páginas anteriores
-  });
+});
 

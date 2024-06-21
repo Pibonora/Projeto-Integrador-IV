@@ -1,7 +1,7 @@
 // Importa os módulos necessários do Firebase
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
 import { getAuth, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
-import { getDatabase, ref, set, push, onValue } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+import { getDatabase, ref, set, push, onValue, remove, update } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
 
 // Configuração do Firebase
 const firebaseConfig = {
@@ -19,9 +19,16 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
 
-window.onload = function() {
+let editKey = null;
+
+window.onload = function () {
     document.getElementById('add-pergunta-resposta-btn').addEventListener('click', adicionarCampoPerguntaResposta);
     document.getElementById('salvar-btn').addEventListener('click', adicionarPerguntaResposta);
+    document.getElementById('edit-add-pergunta-resposta-btn').addEventListener('click', adicionarCampoPerguntaRespostaEdicao);
+    document.getElementById('edit-salvar-btn').addEventListener('click', salvarAlteracoes);
+    document.getElementById('close-modal').addEventListener('click', function () {
+        document.getElementById('edit-modal').style.display = "none";
+    });
     onAuthStateChanged(auth, (user) => {
         if (user) {
             const userId = user.uid;
@@ -42,6 +49,17 @@ window.onload = function() {
 
 function adicionarCampoPerguntaResposta() {
     const form = document.getElementById('perguntas-respostas-form');
+    const div = document.createElement('div');
+    div.classList.add('pergunta-resposta');
+    div.innerHTML = `
+        <input type="text" name="pergunta" placeholder="Digite a pergunta">
+        <input type="text" name="resposta" placeholder="Digite a resposta">
+    `;
+    form.appendChild(div);
+}
+
+function adicionarCampoPerguntaRespostaEdicao() {
+    const form = document.getElementById('edit-perguntas-respostas-form');
     const div = document.createElement('div');
     div.classList.add('pergunta-resposta');
     div.innerHTML = `
@@ -105,7 +123,6 @@ document.getElementById("logout-btn").addEventListener('click', function (e) {
     });
 })
 
-
 function exibirRegistros(data) {
     const container = document.getElementById('container');
     container.innerHTML = '';
@@ -118,12 +135,28 @@ function exibirRegistros(data) {
         const nomeTitulo = document.createElement('h2');
         nomeTitulo.textContent = registro.nome;
         cardHeader.appendChild(nomeTitulo);
+
         const btnPerguntasRespostas = document.createElement('button');
         btnPerguntasRespostas.textContent = 'Estudar';
-        btnPerguntasRespostas.addEventListener('click', function() {
+        btnPerguntasRespostas.addEventListener('click', function () {
             exibirPerguntasRespostas(card, registro);
         });
         cardHeader.appendChild(btnPerguntasRespostas);
+
+        const btnEditar = document.createElement('button');
+        btnEditar.textContent = 'Editar';
+        btnEditar.addEventListener('click', function () {
+            abrirFormularioEdicao(key, registro);
+        });
+        cardHeader.appendChild(btnEditar);
+
+        const btnExcluir = document.createElement('button');
+        btnExcluir.textContent = 'Excluir';
+        btnExcluir.addEventListener('click', function () {
+            excluirRegistro(key);
+        });
+        cardHeader.appendChild(btnExcluir);
+
         card.appendChild(cardHeader);
         container.appendChild(card);
     }
@@ -142,14 +175,14 @@ function exibirPerguntasRespostas(card, registro) {
         cardContent.innerHTML = '';
         if (index < registro.perguntasRespostas.length) {
             const perguntaResposta = registro.perguntasRespostas[index];
-            cardContent.innerHTML = `<p style="color: black">Pergunta:</p> <p>${perguntaResposta.pergunta}</p>`;
+            cardContent.innerHTML = `<p style="color: black; font-weight: bold;">Pergunta:</p> <p>${perguntaResposta.pergunta}</p>`;
             const btnMostrarResposta = document.createElement('button');
             btnMostrarResposta.textContent = 'Mostrar Resposta';
-            btnMostrarResposta.addEventListener('click', function() {
-                cardContent.innerHTML += `<p style="color: black">Resposta:</p> <p>${perguntaResposta.resposta}</p>`;
+            btnMostrarResposta.addEventListener('click', function () {
+                cardContent.innerHTML += `<p style="color: black; font-weight: bold;">Resposta:</p> <p>${perguntaResposta.resposta}</p>`;
                 const btnProximaPergunta = document.createElement('button');
                 btnProximaPergunta.textContent = 'Próxima Pergunta';
-                btnProximaPergunta.addEventListener('click', function() {
+                btnProximaPergunta.addEventListener('click', function () {
                     index++;
                     mostrarProximaPergunta();
                 });
@@ -157,10 +190,10 @@ function exibirPerguntasRespostas(card, registro) {
             });
             cardContent.appendChild(btnMostrarResposta);
         } else {
-            cardContent.innerHTML = '<p>Você completou todas as perguntas!</p>';
+            cardContent.innerHTML = '<p style="color: black; font-weight: bold;">Você completou todas as perguntas!</p>';
             const btnEstudarNovamente = document.createElement('button');
             btnEstudarNovamente.textContent = 'Estudar Novamente';
-            btnEstudarNovamente.addEventListener('click', function() {
+            btnEstudarNovamente.addEventListener('click', function () {
                 index = 0;
                 mostrarProximaPergunta();
             });
@@ -172,3 +205,81 @@ function exibirPerguntasRespostas(card, registro) {
     card.appendChild(cardContent);
 }
 
+function abrirFormularioEdicao(key, registro) {
+    editKey = key;
+    document.getElementById('edit-nome').value = registro.nome;
+    const form = document.getElementById('edit-perguntas-respostas-form');
+    form.innerHTML = ''; // Limpa o formulário antes de preenchê-lo
+    registro.perguntasRespostas.forEach((pr) => {
+        const div = document.createElement('div');
+        div.classList.add('pergunta-resposta');
+        div.innerHTML = `
+             <div class="form-group">
+                <label>Pergunta:</label>
+                <input type="text" name="pergunta" placeholder="Digite a pergunta" value="${pr.pergunta}">
+            </div>
+            <div class="form-group">
+                <label>Resposta:</label>
+                <input type="text" name="resposta" placeholder="Digite a resposta" value="${pr.resposta}">
+            </div>
+        `;
+        form.appendChild(div);
+    });
+    document.getElementById('edit-modal').style.display = "block";
+}
+
+function salvarAlteracoes() {
+    const nome = document.getElementById('edit-nome').value;
+    const perguntasRespostas = [];
+    const form = document.getElementById('edit-perguntas-respostas-form');
+    const campos = form.getElementsByClassName('pergunta-resposta');
+
+    for (const campo of campos) {
+        const pergunta = campo.querySelector('input[name="pergunta"]').value;
+        const resposta = campo.querySelector('input[name="resposta"]').value;
+        if (pergunta && resposta) {
+            perguntasRespostas.push({ pergunta, resposta });
+        }
+    }
+
+    if (perguntasRespostas.length === 0) {
+        alert("Por favor, adicione pelo menos uma pergunta.");
+        return;
+    }
+
+    const user = auth.currentUser;
+    if (user && editKey) {
+        const userId = user.uid;
+        const registroRef = ref(db, 'users/' + userId + '/registros/' + editKey);
+        set(registroRef, {
+            nome,
+            perguntasRespostas
+        }).then(() => {
+            alert('Alterações salvas com sucesso!');
+            document.getElementById('edit-modal').style.display = "none";
+        }).catch((error) => {
+            console.error('Erro ao salvar alterações:', error);
+            alert('Erro ao salvar alterações: ' + error.message);
+        });
+    } else {
+        alert('Usuário não autenticado ou chave inválida.');
+    }
+}
+
+function excluirRegistro(key) {
+    const user = auth.currentUser;
+    if (user) {
+        const userId = user.uid;
+        const registroRef = ref(db, 'users/' + userId + '/registros/' + key);
+        if (confirm('Tem certeza que deseja excluir este registro?')) {
+            set(registroRef, null).then(() => {
+                alert('Registro excluído com sucesso!');
+            }).catch((error) => {
+                console.error('Erro ao excluir registro:', error);
+                alert('Erro ao excluir registro: ' + error.message);
+            });
+        }
+    } else {
+        alert('Usuário não autenticado.');
+    }
+}
